@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "association_actives",
+  "collectionName": "coaches",
   "info": {
-    "singularName": "association-active",
-    "pluralName": "association-actives",
-    "displayName": "Association Active",
+    "singularName": "coach",
+    "pluralName": "coaches",
+    "displayName": "Coach",
     "description": ""
   },
   "options": {
@@ -24,14 +24,6 @@
       },
       "type": "string",
       "required": true
-    },
-    "role": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
     },
     "description": {
       "pluginOptions": {
@@ -53,23 +45,6 @@
           "localized": false
         }
       }
-    },
-    "isBoardMember": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "boolean",
-      "default": false
-    },
-    "contactInformation": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "string"
     }
   }
 }
