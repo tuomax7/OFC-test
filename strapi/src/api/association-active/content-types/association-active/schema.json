@@ -4,7 +4,8 @@
   "info": {
     "singularName": "association-active",
     "pluralName": "association-actives",
-    "displayName": "Association Active"
+    "displayName": "Association Active",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -40,19 +41,18 @@
       },
       "type": "richtext"
     },
-    "photo": {
-      "allowedTypes": [
-        "images"
-      ],
+    "profilePhoto": {
       "type": "media",
       "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       }
     },
-    "boardMember": {
+    "isBoardMember": {
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -60,6 +60,14 @@
       },
       "type": "boolean",
       "default": false
+    },
+    "contactInformation": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string"
     }
   }
 }
