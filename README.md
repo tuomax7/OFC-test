@@ -1,6 +1,8 @@
 # Otaniemi Fight Club landing page
 
-## Running the app
+## Running the app in Docker
+
+Create a `.env`file at the root of your project and in the `strapi`folder.
 
 Make sure you have Docker Compose installed and run
 
@@ -9,6 +11,19 @@ docker-compose up
 ```
 
 The frontend client is available at <a href="http://localhost:3000/" target="_blank">http://localhost:3000/</a>
+
+Log into the Strapi admin panel at <a href="http://localhost:1337/admin" target="_blank">http://localhost:1337/admin</a>
+
+## Local Strapi development
+
+When creating new Collection or Single types or specifying Strapi settings, first run the Postgres (e.g. with `docker-compose up`)
+
+And then stop the possibly running Strapi container running in port 1337.
+
+Instead run `npm run strapi develop` inside `strapi` folder. This ensures that new Collection and Single type schema files are saved within the repository.
+
+> **Warning**
+> COLLECTION AND SINGLE TYPE ENTRIES (e.g. any collection members created in Strapi) ARE STORED ONLY LOCALLY!
 
 ## Code formatting
 
