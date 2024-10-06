@@ -2,7 +2,7 @@
 
 ## Running the app in Docker
 
-Create a `.env`file at the root of your project and in the `strapi`folder.
+Create the required `.env` files at the root of the project, in the `strapi`folder and in the `frontend` folder.
 
 Make sure you have Docker Compose installed and run
 

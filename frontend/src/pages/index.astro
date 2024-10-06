@@ -1,36 +1,34 @@
 ---
-import Carousel from "../components/Carousel";
+import Carousel from '../components/Carousel';
 import fetchApi from '../lib/strapi';
 import type MemberComment from '../interfaces/memberComment';
 
 const memberComments = await fetchApi<MemberComment[]>({
-  endpoint: 'member-comments', 
-  wrappedByKey: 'data', 
+  endpoint: 'member-comments',
+  wrappedByKey: 'data'
 });
 
 console.log(memberComments);
-
-
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-		<Carousel/>
-		{
-			memberComments.map((memberComment) => (
-			  <div>
-				<h1>{memberComment.name}</h1>
-				<p>{memberComment.comment}</p>
-			  </div>
-			))
-		}
-	</body>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Astro</h1>
+    <Carousel />
+    {
+      memberComments.map(memberComment => (
+        <div>
+          <h1>{memberComment.name}</h1>
+          <p>{memberComment.comment}</p>
+        </div>
+      ))
+    }
+  </body>
 </html>
