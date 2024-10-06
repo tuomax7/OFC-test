@@ -32,9 +32,7 @@
       "type": "string"
     },
     "photoOfBoard": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false,
       "pluginOptions": {
