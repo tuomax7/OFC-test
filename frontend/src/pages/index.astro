@@ -1,14 +1,12 @@
 ---
 import Carousel from '../components/Carousel';
 import fetchApi from '../lib/strapi';
-import type MemberComment from '../interfaces/memberComment';
+import type { MemberComment } from 'src/types/types';
 
 const memberComments = await fetchApi<MemberComment[]>({
   endpoint: 'member-comments',
   wrappedByKey: 'data'
 });
-
-console.log(memberComments);
 ---
 
 <html lang='en'>
