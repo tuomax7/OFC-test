@@ -25,6 +25,14 @@ Instead run `npm run strapi develop` inside `strapi` folder. This ensures that n
 > **Warning**
 > COLLECTION AND SINGLE TYPE ENTRIES (e.g. any collection members created in Strapi) ARE STORED ONLY LOCALLY!
 
+## Testing
+
+Enable the <a href="https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?utm_source=deque.com&utm_medium=referral&utm_campaign=axe-browser-extensions_hero&pli=1" target="_blank">axe DevTools Chrome extension</a> when developing the frontend.
+
+Open the axe DevTools tab in Chrome DevTools and run the _Full Page Scan_ to check for accessibility issues to fix them accordingly.
+
+![Axe DevTools Tab](./assets/axeDevTools.png)
+
 ## Code formatting
 
 Format code according to rules specified in `.prettierrc` by running
