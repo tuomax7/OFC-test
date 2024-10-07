@@ -31,7 +31,7 @@ Enable the <a href="https://chromewebstore.google.com/detail/axe-devtools-web-ac
 
 Open the axe DevTools tab in Chrome DevTools and run the _Full Page Scan_ to check for accessibility issues to fix them accordingly.
 
-![Axe DevTools Tab](./assets/axeDevTools.png)
+<img src="./assets/axeDevTools.png" alt="Axe DevTools Tab" style="max-width: 200px; height: auto;" />
 
 ## Code formatting
 
