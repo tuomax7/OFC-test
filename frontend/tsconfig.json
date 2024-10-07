@@ -9,6 +9,10 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "alwaysStrict": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "baseUrl": "./",
+    "paths": {
+      "@strapi-types/*": ["../strapi/types/generated/*"]
+    }
   }
 }
