@@ -10,7 +10,7 @@ const NavBar: React.FC = () => {
       <nav className="p-4 flex flex-row items-center">
         <a href="/" className="mr-4">Home</a>
         <a href="/about" className="mr-4">About</a>
-        <a href="/trainings" className="mr-4">Events</a>
+        <a href="/events" className="mr-4">Events</a>
         <a href="/member" className="mr-4">Become a member!</a>
         <a href='/' className='mr-4'>
           <FontAwesomeIcon icon={faSquareInstagram} size="2x" />
