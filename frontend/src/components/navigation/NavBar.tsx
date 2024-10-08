@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareInstagram, faTelegram  } from '@fortawesome/free-brands-svg-icons';
+import LanguageDropDown from './LanguageDropDown.tsx';
 
 const NavBar: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const NavBar: React.FC = () => {
         <a href='/' className='mr-4'>
           <FontAwesomeIcon icon={faTelegram} size="2x" />
         </a>
+        <LanguageDropDown/>
       </nav>
     </div>
   );
