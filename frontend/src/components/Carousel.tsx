@@ -5,17 +5,17 @@ import PersonCard from './PersonCard.tsx';
 
 const responsive = {
   desktop: {
-    breakpoint: { max: 3000, min: 2100 },
+    breakpoint: { max: 3000, min: 1800 },
     items: 5,
     slidesToSlide: 1 // optional, default to 1.
   },
   tablet: {
-    breakpoint: { max: 2099, min: 768 },
-    items: 3,
+    breakpoint: { max: 1799, min: 768 },
+    items: 2,
     slidesToSlide: 1 // optional, default to 1.
   },
   mobile: {
-    breakpoint: { max: 767, min: 464 },
+    breakpoint: { max: 1200, min: 464 },
     items: 2,
     slidesToSlide: 1 // optional, default to 1.
   }
