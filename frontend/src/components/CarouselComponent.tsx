@@ -15,11 +15,21 @@ const responsive = {
     slidesToSlide: 1 // optional, default to 1.
   },
   mobile: {
-    breakpoint: { max: 1200, min: 464 },
+    breakpoint: { max: 1199, min: 464 },
     items: 2,
     slidesToSlide: 1 // optional, default to 1.
   }
 };
+
+const getResponsivenessGroup = (size) => {
+  if( size < responsive.tablet.breakpoint.min){
+    return 0
+  } else if (size < responsive.desktop.breakpoint.min){
+    return 1
+  } else {
+    return 2
+  }
+}
 
 const sliderImageUrl = [
   { url: '../../public/8240494.jpg' },
@@ -34,9 +44,9 @@ const CarouselComponent: React.FC = () => {
   const carouselRef = useRef<HTMLDivElement>(null); // Ref for the carousel container
   const [currentSlide, setCurrentSlide] = useState<number>()
   const [currentFocus, setCurrentFocus] = useState<number>()
+  const [carouselShift, setCarouselShift] = useState(0)
 
   useEffect(() => {
-    // Measure the width of the carousel when the component is mounted
     if (carouselRef.current) {
       setCarouselWidth(carouselRef.current.offsetWidth);
     }
@@ -44,8 +54,11 @@ const CarouselComponent: React.FC = () => {
 
     const handleResize = () => {
       if (carouselRef.current) {
-
-        setCarouselWidth(carouselRef.current.offsetWidth);
+        const newGroup = getResponsivenessGroup(carouselRef.current.offsetWidth)
+        if(carouselShift !== newGroup){
+          setCarouselShift(newGroup)
+        }
+        setCarouselWidth(carouselRef.current.offsetWidth)
       }
     };
 
@@ -65,13 +78,14 @@ const CarouselComponent: React.FC = () => {
         infinite={true}
         partialVisible={false}
         dotListClass="custom-dot-list-style"
-        afterChange={(previousSlide,{currentSlide}) =>{
-
+        afterChange={(previousSlide, {currentSlide}) =>{
+          //does not work properly
+          setCurrentFocus(currentSlide - sliderImageUrl.length)
         }}
       >
         {sliderImageUrl.map((imageUrl, index) => (
           <div className='mb-10 mt-10' key={index}>
-            <PersonCard name={`Person ${index + 1}`} />
+            <PersonCard name={`Person ${index + 1}`} focused={currentFocus === index}/>
           </div>
         ))}
       </Carousel>
