@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import LanguageDropDown from './LanguageDropDown.tsx';
-//todo load the icons before client
 const NavBar: React.FC = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
