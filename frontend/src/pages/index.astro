@@ -20,7 +20,7 @@ const memberComments = await fetchApi<MemberComment[]>({
   </head>
   <body>
     <h1>Astro</h1>
-    <NavBar client:load/>
+    <NavBar client:only="react"/>
     <CarouselComponent client:only='react'/>
     {
       memberComments.map(memberComment => (
