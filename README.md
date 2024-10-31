@@ -33,6 +33,14 @@ Open the axe DevTools tab in Chrome DevTools and run the _Full Page Scan_ to che
 
 <img src="./assets/axeDevTools.png" alt="Axe DevTools Tab" style="max-width: 200px; height: auto;" />
 
+## Typechecking
+
+To check for TypeScript violations, run
+
+```shell
+npm run tsc
+```
+
 ## Code formatting
 
 Format code according to rules specified in `.prettierrc` by running
