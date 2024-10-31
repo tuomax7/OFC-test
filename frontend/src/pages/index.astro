@@ -1,5 +1,6 @@
 ---
-import Carousel from '../components/Carousel';
+import NavBar from '../components/navigation/NavBar';
+import CarouselComponent from '../components/CarouselComponent';
 import fetchApi from '../lib/strapi';
 import type { MemberComment } from 'src/types/types';
 
@@ -19,7 +20,8 @@ const memberComments = await fetchApi<MemberComment[]>({
   </head>
   <body>
     <h1>Astro</h1>
-    <Carousel />
+    <NavBar client:load/>
+    <CarouselComponent client:only='react'/>
     {
       memberComments.map(memberComment => (
         <div>
