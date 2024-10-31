@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import PersonCard from './PersonCard.tsx';
 
 const responsive = {
@@ -21,15 +21,15 @@ const responsive = {
   }
 };
 
-const getResponsivenessGroup = (size) => {
-  if( size < responsive.tablet.breakpoint.min){
-    return 0
-  } else if (size < responsive.desktop.breakpoint.min){
-    return 1
+const getResponsivenessGroup = size => {
+  if (size < responsive.tablet.breakpoint.min) {
+    return 0;
+  } else if (size < responsive.desktop.breakpoint.min) {
+    return 1;
   } else {
-    return 2
+    return 2;
   }
-}
+};
 
 const sliderImageUrl = [
   { url: '../../public/8240494.jpg' },
@@ -42,23 +42,22 @@ const sliderImageUrl = [
 const CarouselComponent: React.FC = () => {
   const [carouselWidth, setCarouselWidth] = useState<number>(0); // Store the width of the carousel
   const carouselRef = useRef<HTMLDivElement>(null); // Ref for the carousel container
-  const [currentSlide, setCurrentSlide] = useState<number>()
-  const [currentFocus, setCurrentFocus] = useState<number>()
-  const [carouselShift, setCarouselShift] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState<number>();
+  const [currentFocus, setCurrentFocus] = useState<number>();
+  const [carouselShift, setCarouselShift] = useState(0);
 
   useEffect(() => {
     if (carouselRef.current) {
       setCarouselWidth(carouselRef.current.offsetWidth);
     }
 
-
     const handleResize = () => {
       if (carouselRef.current) {
-        const newGroup = getResponsivenessGroup(carouselRef.current.offsetWidth)
-        if(carouselShift !== newGroup){
-          setCarouselShift(newGroup)
+        const newGroup = getResponsivenessGroup(carouselRef.current.offsetWidth);
+        if (carouselShift !== newGroup) {
+          setCarouselShift(newGroup);
         }
-        setCarouselWidth(carouselRef.current.offsetWidth)
+        setCarouselWidth(carouselRef.current.offsetWidth);
       }
     };
 
@@ -68,7 +67,7 @@ const CarouselComponent: React.FC = () => {
   }, []);
 
   return (
-    <div className="parent bg-[#EC4D4D] bg-opacity-75" ref={carouselRef}>
+    <div className='parent bg-red bg-opacity-75' ref={carouselRef}>
       <p>Carousel width: {carouselWidth}px</p> {/* Display the carousel width */}
       <Carousel
         responsive={responsive}
@@ -77,15 +76,15 @@ const CarouselComponent: React.FC = () => {
         showDots={true}
         infinite={true}
         partialVisible={false}
-        dotListClass="custom-dot-list-style"
-        afterChange={(previousSlide, {currentSlide}) =>{
+        dotListClass='custom-dot-list-style'
+        afterChange={(previousSlide, { currentSlide }) => {
           //does not work properly
-          setCurrentFocus(currentSlide - sliderImageUrl.length)
+          setCurrentFocus(currentSlide - sliderImageUrl.length);
         }}
       >
         {sliderImageUrl.map((imageUrl, index) => (
           <div className='mb-10 mt-10' key={index}>
-            <PersonCard name={`Person ${index + 1}`} focused={currentFocus === index}/>
+            <PersonCard name={`Person ${index + 1}`} focused={currentFocus === index} />
           </div>
         ))}
       </Carousel>
