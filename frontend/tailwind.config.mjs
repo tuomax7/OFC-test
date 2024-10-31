@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 // Add custom colors, fonts etc. here for easy reuse
 
@@ -10,7 +11,7 @@ export default {
       black: '#262525'
     },
     fontFamily: {
-      sans: ['Inter', 'sans-serif']
+      sans: ['InterVariable', ...defaultTheme.fontFamily.sans]
     }
   },
   plugins: []
