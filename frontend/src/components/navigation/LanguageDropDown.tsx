@@ -5,7 +5,7 @@ import { useStore } from '@nanostores/react';
 const LanguageDropDown: React.FC = () => {
   const languages: string[] = ['EN', 'FIN'];
   const language = useStore($language);
-  const handleLanguageChange = (e) => {
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLanguage(e.target.value);
   };
 

@@ -21,7 +21,7 @@ const responsive = {
   }
 };
 
-const getResponsivenessGroup = size => {
+const getResponsivenessGroup = (size: number) => {
   if (size < responsive.tablet.breakpoint.min) {
     return 0;
   } else if (size < responsive.desktop.breakpoint.min) {
@@ -42,7 +42,7 @@ const sliderImageUrl = [
 const CarouselComponent: React.FC = () => {
   const [carouselWidth, setCarouselWidth] = useState<number>(0); // Store the width of the carousel
   const carouselRef = useRef<HTMLDivElement>(null); // Ref for the carousel container
-  const [currentSlide, setCurrentSlide] = useState<number>();
+  const [_currentSlide, _setCurrentSlide] = useState<number>();
   const [currentFocus, setCurrentFocus] = useState<number>();
   const [carouselShift, setCarouselShift] = useState(0);
 
@@ -77,12 +77,12 @@ const CarouselComponent: React.FC = () => {
         infinite={true}
         partialVisible={false}
         dotListClass='custom-dot-list-style'
-        afterChange={(previousSlide, { currentSlide }) => {
+        afterChange={(_previousSlide, { currentSlide }) => {
           //does not work properly
           setCurrentFocus(currentSlide - sliderImageUrl.length);
         }}
       >
-        {sliderImageUrl.map((imageUrl, index) => (
+        {sliderImageUrl.map((_imageUrl, index) => (
           <div className='mb-10 mt-10' key={index}>
             <PersonCard name={`Person ${index + 1}`} focused={currentFocus === index} />
           </div>
