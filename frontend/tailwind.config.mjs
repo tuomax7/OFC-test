@@ -14,5 +14,7 @@ export default {
       sans: ['InterVariable', ...defaultTheme.fontFamily.sans]
     }
   },
-  plugins: []
+  plugins: [
+    require('daisyui'),
+  ]
 };
