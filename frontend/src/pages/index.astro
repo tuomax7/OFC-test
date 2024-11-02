@@ -1,29 +1,20 @@
 ---
+import Main from '../layouts/Main.astro';
 import NavBar from '../components/navigation/NavBar';
 import CarouselComponent from '../components/CarouselComponent';
 import fetchApi from '../lib/strapi';
 import type { MemberComment } from 'src/types/types';
-
 const memberComments =
   (await fetchApi<MemberComment[]>({
     endpoint: 'member-comments',
     wrappedByKey: 'data'
   })) ?? [];
 ---
-
-<html lang='en'>
-  <head>
-    <meta charset='utf-8' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
+<Main>
     <NavBar client:only='react' />
     <h1>This is the Home page</h1>
     <CarouselComponent client:only='react' />
-    {
+   {
       memberComments.map(memberComment => (
         <div>
           <h1>{memberComment.name}</h1>
@@ -31,5 +22,4 @@ const memberComments =
         </div>
       ))
     }
-  </body>
-</html>
+</Main>
