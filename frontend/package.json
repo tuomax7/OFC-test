@@ -25,5 +25,8 @@
     "react-dom": "^18.3.1",
     "react-multi-carousel": "^2.8.5",
     "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "daisyui": "^4.12.14"
   }
 }
