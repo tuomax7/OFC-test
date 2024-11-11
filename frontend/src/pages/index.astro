@@ -2,9 +2,10 @@
 import Main from '../layouts/Main.astro';
 import CarouselComponent from '../components/CarouselComponent';
 
-import fetchApi from '../lib/strapi';
-import type { MemberComment } from 'src/types/types';
+// import fetchApi from '../lib/strapi';
+// import type { MemberComment } from 'src/types/types';
 import MarkdownArticle from 'src/components/MarkdownArticle';
+import InstagramFeed from 'src/components/InstagramFeed';
 
 const markdown = `
 # Otaniemi Fight Club
@@ -14,22 +15,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus congue, lorem
 JOIN THE <a href="https://t.me/+zR_51AMzJUc1NmFk" target="_blank">TELEGRAM GROUP</a>
 `;
 
-const memberComments =
-  (await fetchApi<MemberComment[]>({
-    endpoint: 'member-comments',
-    wrappedByKey: 'data'
-  })) ?? [];
+// const memberComments =
+//   (await fetchApi<MemberComment[]>({
+//     endpoint: 'member-comments',
+//     wrappedByKey: 'data'
+//   })) ?? [];
 ---
 
 <Main>
   <MarkdownArticle markdown={markdown} />
+  <hr />
+  <h2>Comments from our members</h2>
   <CarouselComponent client:only='react' />
-  {
-    memberComments.map(memberComment => (
-      <div>
-        <h1>{memberComment.name}</h1>
-        <p>{memberComment.comment}</p>
-      </div>
-    ))
-  }
+  <hr />
+  <InstagramFeed />
 </Main>
