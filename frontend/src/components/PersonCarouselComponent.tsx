@@ -31,15 +31,15 @@ const getResponsivenessGroup = (size: number) => {
   }
 };
 
-const sliderImageUrl = [
-  { url: '../../public/8240494.jpg' },
-  { url: '../../public/8240494.jpg' },
-  { url: '../../public/8240494.jpg' },
-  { url: '../../public/8240494.jpg' },
-  { url: '../../public/8240494.jpg' }
-];
+type Props = {
+  personSlides: {
+    name: string;
+    description: string;
+    image: string;
+  }[];
+};
 
-const CarouselComponent: React.FC = () => {
+const CarouselComponent: React.FC<Props> = ({ personSlides }) => {
   const [carouselWidth, setCarouselWidth] = useState<number>(0); // Store the width of the carousel
   const carouselRef = useRef<HTMLDivElement>(null); // Ref for the carousel container
   const [_currentSlide, _setCurrentSlide] = useState<number>();
@@ -79,12 +79,17 @@ const CarouselComponent: React.FC = () => {
         dotListClass='custom-dot-list-style'
         afterChange={(_previousSlide, { currentSlide }) => {
           //does not work properly
-          setCurrentFocus(currentSlide - sliderImageUrl.length);
+          setCurrentFocus(currentSlide - personSlides.length);
         }}
       >
-        {sliderImageUrl.map((_imageUrl, index) => (
+        {personSlides.map((slide, index) => (
           <div className='mb-10 mt-10' key={index}>
-            <PersonCard name={`Person ${index + 1}`} focused={currentFocus === index} />
+            <PersonCard
+              name={slide.name}
+              focused={currentFocus === index}
+              description={slide.description}
+              image={slide.image}
+            />
           </div>
         ))}
       </Carousel>

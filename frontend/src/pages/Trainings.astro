@@ -1,9 +1,18 @@
 ---
 import Main from '../layouts/Main.astro';
+import PersonCarouselComponent from '../components/PersonCarouselComponent';
+
+const coachSlides = Array.from({ length: 5 }, (_, index) => ({
+  name: `Coach ${index}`,
+  description:
+    'Master Kenji is a seasoned martial arts coach with over 20 years of experience, specializing in both traditional and modern techniques. His teaching combines discipline, mindfulness, and strategic thinking, focusing on developing not just physical strength but mental resilience in his students.',
+  image: '/public/8240494.jpg'
+}));
 ---
 
 <Main>
   <p>This is the Trainings page</p>
+  <PersonCarouselComponent client:only='react' personSlides={coachSlides} />
   <div class='card bg-red w-80 shadow-xl m-10'>
     <figure class='px-10 pt-10'>
       <img

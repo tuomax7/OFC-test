@@ -1,9 +1,6 @@
 ---
 import Main from '../layouts/Main.astro';
-import CarouselComponent from '../components/CarouselComponent';
-
-// import fetchApi from '../lib/strapi';
-// import type { MemberComment } from 'src/types/types';
+import PersonCarouselComponent from '../components/PersonCarouselComponent';
 import MarkdownArticle from 'src/components/MarkdownArticle';
 import InstagramFeed from 'src/components/InstagramFeed';
 
@@ -15,18 +12,27 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus congue, lorem
 JOIN THE <a href="https://t.me/+zR_51AMzJUc1NmFk" target="_blank">TELEGRAM GROUP</a>
 `;
 
+// import fetchApi from '../lib/strapi';
+// import type { MemberComment } from 'src/types/types';
 // const memberComments =
 //   (await fetchApi<MemberComment[]>({
 //     endpoint: 'member-comments',
 //     wrappedByKey: 'data'
 //   })) ?? [];
+
+const memberCommentSlides = Array.from({ length: 5 }, (_, index) => ({
+  name: `Person ${index}`,
+  description:
+    'Otaniemi Fight Club is an incredible place to train and grow in martial arts! The instructors are highly skilled, approachable, and passionate about helping everyone improve, regardless of experience level.',
+  image: '/public/8240494.jpg'
+}));
 ---
 
 <Main>
   <MarkdownArticle markdown={markdown} />
   <hr />
   <h2>Comments from our members</h2>
-  <CarouselComponent client:only='react' />
+  <PersonCarouselComponent client:only='react' personSlides={memberCommentSlides} />
   <hr />
   <InstagramFeed />
 </Main>
