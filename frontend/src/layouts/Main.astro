@@ -1,5 +1,6 @@
 ---
 import Footer from 'src/components/navigation/Footer.tsx';
+import NavBar from 'src/components/navigation/NavBar';
 ---
 
 <html lang='en'>
@@ -12,6 +13,7 @@ import Footer from 'src/components/navigation/Footer.tsx';
     <title>About</title>
   </head>
   <body style='min-height: 100vh; display: flex; flex-direction: column; flex: 1;'>
+    <NavBar client:only='react' />
     <main style='flex: 1;'>
       <slot />
     </main>

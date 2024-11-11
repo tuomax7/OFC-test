@@ -15,7 +15,9 @@ const NavBar: React.FC = () => {
 
   return (
     <div className='bg-white flex flex-row justify-between items-center w-full mb-5 pt-2 pb-2 text-lg text-black'>
-      <img src='/ofcLogo.jpg' alt='ofc_logo' />
+      <a href='/'>
+        <img className='scale-75' src='/ofcLogo.jpg' alt='ofc_logo' />
+      </a>
       <nav className='p-4 flex flex-row items-center'>
         <a href='/' className={`mr-4 ${linkStyling('/')}`}>
           Home

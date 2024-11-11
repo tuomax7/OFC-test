@@ -1,25 +1,35 @@
 ---
 import Main from '../layouts/Main.astro';
-import NavBar from '../components/navigation/NavBar';
 import CarouselComponent from '../components/CarouselComponent';
+
 import fetchApi from '../lib/strapi';
 import type { MemberComment } from 'src/types/types';
+import MarkdownArticle from 'src/components/MarkdownArticle';
+
+const markdown = `
+# Otaniemi Fight Club
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus congue, lorem ac convallis vulputate, nibh arcu consequat nunc, sit amet luctus tellus velit sit amet nulla. Morbi gravida mauris accumsan egestas rutrum. Donec ac augue viverra, suscipit justo id, efficitur turpis. Donec risus erat, efficitur non commodo eget, consequat quis est. Donec volutpat erat ut felis tincidunt posuere vulputate vel nisi.
+
+JOIN THE <a href="https://t.me/+zR_51AMzJUc1NmFk" target="_blank">TELEGRAM GROUP</a>
+`;
+
 const memberComments =
   (await fetchApi<MemberComment[]>({
     endpoint: 'member-comments',
     wrappedByKey: 'data'
   })) ?? [];
 ---
+
 <Main>
-    <NavBar client:only='react' />
-    <h1>This is the Home page</h1>
-    <CarouselComponent client:only='react' />
-   {
-      memberComments.map(memberComment => (
-        <div>
-          <h1>{memberComment.name}</h1>
-          <p>{memberComment.comment}</p>
-        </div>
-      ))
-    }
+  <MarkdownArticle markdown={markdown} />
+  <CarouselComponent client:only='react' />
+  {
+    memberComments.map(memberComment => (
+      <div>
+        <h1>{memberComment.name}</h1>
+        <p>{memberComment.comment}</p>
+      </div>
+    ))
+  }
 </Main>
