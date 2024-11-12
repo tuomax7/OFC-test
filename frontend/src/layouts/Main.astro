@@ -1,5 +1,6 @@
 ---
 import Footer from 'src/components/navigation/Footer.tsx';
+import NavBar from 'src/components/navigation/NavBar';
 ---
 
 <html lang='en'>
@@ -11,10 +12,11 @@ import Footer from 'src/components/navigation/Footer.tsx';
     <meta name='generator' content={Astro.generator} />
     <title>About</title>
   </head>
-  <body>
-    <main>
+  <body style='min-height: 100vh; display: flex; flex-direction: column; flex: 1; background-color: #262525;'>
+    <NavBar client:only='react' />
+    <main style='flex: 1; display: flex; flex-direction: column; gap: 50px; text-align: center;'>
       <slot />
     </main>
-    <Footer/>
+    <Footer />
   </body>
 </html>

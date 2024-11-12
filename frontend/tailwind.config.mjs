@@ -6,15 +6,15 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
-    colors: {
-      red: '#EC4D4D',
-      black: '#262525'
-    },
-    fontFamily: {
-      sans: ['InterVariable', ...defaultTheme.fontFamily.sans]
+    extend: {
+      colors: {
+        red: '#EC4D4D',
+        black: '#262525'
+      },
+      fontFamily: {
+        sans: ['InterVariable', ...defaultTheme.fontFamily.sans]
+      }
     }
   },
-  plugins: [
-    require('daisyui'),
-  ]
+  plugins: [require('daisyui')]
 };

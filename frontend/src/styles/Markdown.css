@@ -1,0 +1,69 @@
+/* General text color and font settings */
+article {
+  color: white;
+  line-height: 1.6;
+  margin: 50px;
+}
+
+/* Header styles */
+article h1 {
+  font-size: 2em;
+  margin: 20px 0 10px;
+}
+article h2 {
+  font-size: 1.75em;
+  margin: 18px 0 9px;
+}
+article h3 {
+  font-size: 1.5em;
+  margin: 16px 0 8px;
+}
+article h4 {
+  font-size: 1.25em;
+  margin: 14px 0 7px;
+}
+
+/* Paragraph styles */
+article p {
+  margin: 10px 0;
+}
+
+/* Link styles */
+article a {
+  color: #61dafb;
+  text-decoration: none;
+}
+article a:hover {
+  text-decoration: underline;
+}
+
+/* List styles */
+article ul,
+article ol {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+article ul li,
+article ol li {
+  margin: 5px 0;
+}
+
+/* Table styles */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+article th,
+article td {
+  border: 1px solid #555;
+  padding: 8px;
+  text-align: left;
+}
+article th {
+  background-color: #666;
+  color: #fff;
+}
+article td {
+  background-color: #444;
+}
