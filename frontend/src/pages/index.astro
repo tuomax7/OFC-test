@@ -1,8 +1,8 @@
 ---
 import Main from '../layouts/Main.astro';
+import MediaCarousel from 'src/components/MediaCarousel';
 import PersonCarouselComponent from '../components/PersonCarouselComponent';
 import MarkdownArticle from 'src/components/MarkdownArticle';
-import InstagramFeed from 'src/components/InstagramFeed';
 
 const markdown = `
 # Otaniemi Fight Club
@@ -30,9 +30,9 @@ const memberCommentSlides = Array.from({ length: 5 }, (_, index) => ({
 
 <Main>
   <MarkdownArticle markdown={markdown} />
+  <MediaCarousel client:only='react' />
   <hr />
   <h2>Comments from our members</h2>
   <PersonCarouselComponent client:only='react' personSlides={memberCommentSlides} />
   <hr />
-  <InstagramFeed />
 </Main>
