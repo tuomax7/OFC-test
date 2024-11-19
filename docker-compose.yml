@@ -7,7 +7,6 @@ services:
       context: ./strapi
     image: strapi:latest
     restart: unless-stopped
-    env_file: ./strapi/.env
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_HOST: strapiDB
@@ -23,7 +22,6 @@ services:
       - ./strapi/src:/opt/app/src
       - ./strapi/package.json:/opt/package.json
       - ./strapi/package-lock.json:/opt/package-lock.json
-      - ./strapi/.env:/opt/app/.env
       - ./strapi/public/uploads:/opt/app/public/uploads
     ports:
       - '1337:1337'
@@ -36,7 +34,6 @@ services:
     container_name: strapiDB
     platform: linux/amd64
     restart: unless-stopped
-    env_file: ./strapi/.env
     image: postgres:14.5-alpine
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
