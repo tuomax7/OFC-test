@@ -1,13 +1,21 @@
-FROM node:lts-alpine3.19
+# Base image for Astro
+FROM node:18
 
+# Set working directory
 WORKDIR /app
 
-ENV PATH /app/node_modules/.bin:$PATH
-
-COPY *.json ./
-
+# Copy package files and install dependencies
+COPY package.json package-lock.json ./
 RUN npm install
 
+# Copy the rest of the application
+COPY . .
+
+# Build the Astro app
+RUN npm run build
+
+# Expose Astro's default port
 EXPOSE 3000
 
-CMD [ "astro", "dev" ]
+# Start the production server
+CMD ["npm", "run", "preview"]

@@ -2,84 +2,40 @@ version: '3.8'
 
 services:
   strapi:
-    container_name: strapi
     build:
       context: ./strapi
-    image: strapi:latest
-    restart: unless-stopped
-    environment:
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: strapiDB
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PORT: ${DATABASE_PORT}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      NODE_ENV: ${NODE_ENV}
-    volumes:
-      - ./strapi/config:/opt/app/config
-      - ./strapi/src:/opt/app/src
-      - ./strapi/package.json:/opt/package.json
-      - ./strapi/package-lock.json:/opt/package-lock.json
-      - ./strapi/public/uploads:/opt/app/public/uploads
+      dockerfile: Dockerfile
     ports:
-      - '1337:1337'
-    networks:
-      - strapi
+      - "1337:1337"
+    environment:
+      NODE_ENV: production
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
     depends_on:
-      - strapiDB
-
-  strapiDB:
-    container_name: strapiDB
-    platform: linux/amd64
-    restart: unless-stopped
-    image: postgres:14.5-alpine
-    environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
-    volumes:
-      - strapi-data:/var/lib/postgresql/data/
-      # Uncomment the line below if you prefer using a bind mount instead of a Docker volume
-      # - ./strapi/data:/var/lib/postgresql/data/
-    ports:
-      - '5432:5432'
-    networks:
-      - strapi
-
-  strapiAdminer:
-    container_name: strapiAdminer
-    image: adminer
-    restart: unless-stopped
-    ports:
-      - '9090:8080'
-    environment:
-      ADMINER_DEFAULT_SERVER: strapiDB
-    networks:
-      - strapi
-    depends_on:
-      - strapiDB
+      - db
 
   frontend:
     build:
       context: ./frontend
-    container_name: frontend
-    restart: unless-stopped
+      dockerfile: Dockerfile
     ports:
-      - '3000:3000'
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules/
-    networks:
-      - strapi
+      - "3000:3000"
     depends_on:
       - strapi
 
-volumes:
-  strapi-data:
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi
+      POSTGRES_DB: strapi
+    volumes:
+      - db_data:/var/lib/postgresql/data
 
-networks:
-  strapi:
-    name: Strapi
-    driver: bridge
+volumes:
+  db_data:
